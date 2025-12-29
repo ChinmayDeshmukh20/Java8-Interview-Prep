@@ -1,6 +1,7 @@
 package StringJava8Questions;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -66,10 +67,41 @@ public class Main {
 
         // similarly it can be done for longest words in list
 
+        // ===================================================================================
+      // Question : Sort a list of strings case-insensitively.
+
+        List<String> strings = Arrays.asList("Banana", "apple", "Orange", "grape", "APPLE");
+
+        List<String> sortedList = strings.stream()
+                .sorted(String.CASE_INSENSITIVE_ORDER)
+                .collect(Collectors.toList());
+
+        System.out.println(sortedList);
+
+        // Question : Remove vowels from a given string using Java 8.
+
+        String withVowel = "chinmay";
+
+        String withoutVowel = withVowel.chars().mapToObj(c -> (char)c).filter(x -> !"aeiouAEIOU".contains(x.toString())).map(String::valueOf).collect(Collectors.joining());
+        // c.toString()
+        //c is a Character object
+        //.toString() turns it into a String, because .contains() expects a String argument.
+
+        System.out.println(withoutVowel);
+
+        // Question : Replace multiple spaces in a string with a single space.
+
+        String withMultipleSpaces = "Chi   nm ay";
+
+      //  String withSingleSpace = withMultipleSpaces.replaceAll();
 
 
+        // Question  :Extract only numeric values from an alphanumeric string using Java 8.
 
+        String alphanumberString = "asbd233sds31dasj";
 
+        String NumericString= alphanumberString.chars().mapToObj(c -> (char)c).filter(x -> "1234567890".contains(x.toString())).map(String::valueOf).collect(Collectors.joining());
+        System.out.println(NumericString);
 
 
 
