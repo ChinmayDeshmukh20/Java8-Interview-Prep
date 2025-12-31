@@ -1,9 +1,6 @@
 package StringJava8Questions.StreamAPIQuestions;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class groupingByPractice {
@@ -43,6 +40,51 @@ public class groupingByPractice {
         System.out.println(categoryList);
 
             // product::category == product -> product.category
+
+
+        //=============================================================================================================
+        //aggregating
+        //calculate total price of products in each category
+
+        Map<String, Integer> pricePerCategory=productList.stream().collect(Collectors.groupingBy(product::category,Collectors.summingInt(product::price)));
+        System.out.println(pricePerCategory);
+
+        // calculate average price of products in each category
+        Map<String, Double> avgPricePerCategory=productList.stream().collect(Collectors.groupingBy(product::category,Collectors.averagingInt(product::price)));
+        System.out.println(avgPricePerCategory);
+
+        //count products available in each category
+        Map<String, Long> productsPerCategory=productList.stream().collect(Collectors.groupingBy(product::category,Collectors.counting()));
+        System.out.println(productsPerCategory);
+
+
+        // product with min price in each category
+        Map<String, Optional<product>> minPricePerCategory = productList.stream().collect(Collectors.groupingBy(product::category,Collectors.minBy(
+                Comparator.comparing(product::price)
+        )));
+        System.out.println(minPricePerCategory);
+
+        // product with min price across all category
+        Optional<product> minPrice = productList.stream().collect(Collectors.minBy(
+                Comparator.comparing(product::price)
+        ));
+        System.out.println(minPrice);
+
+
+        // Using SummaryStatistics on product prices
+         Map<String, IntSummaryStatistics>summaryStats    =productList.stream().collect(Collectors.groupingBy(product::category,Collectors.summarizingInt(product::price)));
+        System.out.println( "summary stats are for each category: "  + summaryStats);
+
+        // partitioning by
+
+        // partition products above and below 50000 price
+
+        var partitionedResult=productList.stream().collect(Collectors.partitioningBy(product -> product.price()>50000));
+        System.out.println(partitionedResult);
+
+
+
+
 
 
 
