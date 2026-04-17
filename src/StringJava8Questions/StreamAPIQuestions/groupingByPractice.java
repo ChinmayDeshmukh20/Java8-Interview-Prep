@@ -46,15 +46,15 @@ public class groupingByPractice {
         //aggregating
         //calculate total price of products in each category
 
-        Map<String, Integer> pricePerCategory=productList.stream().collect(Collectors.groupingBy(product::category,Collectors.summingInt(product::price)));
+        Map<String, Integer> pricePerCategory=  productList.stream().collect(Collectors.groupingBy(product::category,Collectors.summingInt(product::price)));
         System.out.println(pricePerCategory);
 
         // calculate average price of products in each category
-        Map<String, Double> avgPricePerCategory=productList.stream().collect(Collectors.groupingBy(product::category,Collectors.averagingInt(product::price)));
+        Map<String, Double> avgPricePerCategory=  productList.stream().collect(Collectors.groupingBy(product::category,Collectors.averagingInt(product::price)));
         System.out.println(avgPricePerCategory);
 
         //count products available in each category
-        Map<String, Long> productsPerCategory=productList.stream().collect(Collectors.groupingBy(product::category,Collectors.counting()));
+        Map<String, Long> productsPerCategory= productList.stream().collect(Collectors.groupingBy(product::category,Collectors.counting()));
         System.out.println(productsPerCategory);
 
 
@@ -65,9 +65,7 @@ public class groupingByPractice {
         System.out.println(minPricePerCategory);
 
         // product with min price across all category
-        Optional<product> minPrice = productList.stream().collect(Collectors.minBy(
-                Comparator.comparing(product::price)
-        ));
+        Optional<product> minPrice = productList.stream().min(Comparator.comparing(product::price));
         System.out.println(minPrice);
 
 
