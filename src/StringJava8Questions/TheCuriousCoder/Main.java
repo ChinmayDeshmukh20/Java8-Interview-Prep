@@ -36,11 +36,16 @@ public class Main {
 
 
         List<Employee> employees = new ArrayList<>(Arrays.asList(
-                new Employee("Amit Sharma", "Engineering", 45000),
+                new Employee("Amit Sharma", "Engineering", 50000),
                 new Employee("Priya Verma", "HR", 60000),
                 new Employee("Rahul Mehta", "Finance", 70000),
                 new Employee("Sneha Iyer", "Engineering", 95000),
-                new Employee("Karan Patel", "Marketing", 70000)
+                new Employee("Karan Patel", "Marketing", 70000),
+                new Employee("Neha Kapoor", "HR", 65000),
+                new Employee("Arjun Reddy", "Engineering", 88000),
+                new Employee("Meera Nair", "Finance", 72000),
+                new Employee("Vikram Singh", "Marketing", 78000),
+                new Employee("Pooja Desai", "Engineering", 91000)
         ));
 
         EmployeeSalary.employeeWithSalary(employees);
@@ -54,5 +59,36 @@ public class Main {
         System.out.println(frequencyOfElements.frequencyOfElements(elements));
 
         frequencyOfEmployeesByDept.frequencyOfEmployeesByDepartment(employees);
+
+        TotalSalaryByDept.findTotalSalaryAmtByDept(employees);
+
+        AvgSalaryByDept.findAvgSalaryAmtByDept(employees);
+
+        HighestPaidEmployee.highestPaidEmployeePerDept(employees);
+
+        JoinEmpNamesByComma.JoinEmpNamesByComma(employees);
+
+        List<Integer> list1 = Arrays.asList(1,2,3,4 , 7 , 8);
+
+        List<Integer> list2 = Arrays.asList(2,3,5,6,7 , 4);
+
+        CommonEleInList.findCommonElementsInList(list1 , list2);
+
+
+        List<List<Integer>> listOfLists = Arrays.asList(
+
+                Arrays.asList(1, 2, 3, 4 ),
+                Arrays.asList(3, 4, 5, 6),
+                Arrays.asList(7, 8, 1, 2),
+                Arrays.asList(9, 10, 5, 6),
+                Arrays.asList(11, 12, 7, 8)
+
+        );
+
+        flatMapWithNoDuplicates.flattenedListWithNoDuplicates(listOfLists);
+
+        printEmployeeNames.printFastEmployeeList(employees);
+
+        TotalSalaryOfEmp.totalCombinedSalary(employees);
     }
 }
